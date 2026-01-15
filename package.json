@@ -9,6 +9,7 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@playwright/mcp": "^0.0.55",
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.2"
   }

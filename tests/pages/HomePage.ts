@@ -12,6 +12,6 @@ export class HomePage {
   }
 
   async clickDemoSite() {
-    await this.page.locator('text=Demo Site').click();
+    await this.page.getByRole('link', { name: 'Demo Site' }).first().click();
   }
 }

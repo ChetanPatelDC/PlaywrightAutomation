@@ -1,9 +1,19 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pages/HomePage';
 import { DemoSitePage } from './DemoSitePage';
-import testData from './testData.json';
+import { readFileSync } from 'fs';
+import path from 'path';
 
-testData.forEach(({ url, expectedTitle }) => {
+interface TestData {
+  url: string;
+  expectedTitle: string;
+}
+
+const testdata: TestData[] = JSON.parse(
+  readFileSync(path.resolve(process.cwd(), 'tests', 'testData.json'),
+    'utf-8')
+);
+testdata.forEach(({ url, expectedTitle }) => {
   test(`Validate Demo Site title for ${url}`, async ({ page }) => {
     const homePage = new HomePage(page);
     const demoSitePage = new DemoSitePage(page);
